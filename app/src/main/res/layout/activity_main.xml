@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/backColor"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:textSize="55sp"
+        android:textStyle="bold"
+        android:textColor="@color/orta_renk"
+        android:background="#D6FFA6"
+        android:text="Hafıza Oyunu" />
+
+    <LinearLayout
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:orientation="vertical">
+
+
+        <Button
+            android:id="@+id/button_Kolay"
+            android:layout_width="300dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/kolay"
+            android:textSize="36sp"
+            android:backgroundTint="@color/kolay_renk"/>
+
+        <Button
+            android:id="@+id/button_Orta"
+            android:layout_width="300dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/orta"
+            android:textSize="36sp"
+            android:backgroundTint="@color/orta_renk"/>
+
+        <Button
+            android:id="@+id/button_Zor"
+            android:layout_width="300dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/zor"
+            android:textSize="36sp"
+            android:backgroundTint="@color/zor_renk"/>
+    </LinearLayout>
+    <TextView
+        android:layout_centerInParent="true"
+        android:layout_alignParentBottom="true"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Product By Ertugrul KOC"
+        android:textColor="#D8FFFFFF"/>
+
+
+</RelativeLayout>

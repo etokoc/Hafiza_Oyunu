@@ -1,0 +1,2 @@
+rootProject.name = "Hafıza Oyunu"
+include ':app'
