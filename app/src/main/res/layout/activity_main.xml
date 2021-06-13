@@ -7,6 +7,7 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/bastxt"
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:layout_alignParentTop="true"
@@ -17,8 +18,19 @@
         android:textColor="@color/orta_renk"
         android:background="#D6FFA6"
         android:text="Hafıza Oyunu" />
+    <ImageView
+        android:id="@+id/beyinResim"
+        android:layout_alignTop="@id/bastxt"
+        android:layout_marginTop="100dp"
+        android:layout_centerInParent="true"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/brain" />
 
     <LinearLayout
+        android:layout_alignTop="@id/beyinResim"
+        android:layout_marginTop="180dp"
+        android:id="@+id/linear"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

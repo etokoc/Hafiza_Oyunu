@@ -1,9 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".KolayActivity">
+    tools:context=".KolayActivity"
+    android:id="@+id/kolay_Relative">
+    <TextView
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="30dp"
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/txt_hamle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hamle Sayısı: "/>
+    <GridLayout
+        android:id="@+id/kolay_gridView"
+        android:padding="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:columnCount="3"
+        android:rowCount="2">
+            <ImageButton
+                android:id="@+id/image1"
+                android:src="@drawable/brain"
+                android:layout_width="140dp"
+                android:layout_height="150dp"
+                android:scaleType="fitXY"/>
+            <ImageButton
+                android:id="@+id/image2"
+                android:src="@drawable/brain"
+                android:layout_width="140dp"
+                android:layout_height="150dp"
+                android:scaleType="fitXY"/>
+            <ImageButton
+                android:id="@+id/image3"
+                android:src="@drawable/brain"
+                android:layout_width="140dp"
+                android:layout_height="150dp"
+                android:scaleType="fitXY"/>
+
+        <ImageButton
+            android:id="@+id/image4"
+            android:src="@drawable/brain"
+            android:layout_width="140dp"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"/>
+        <ImageButton
+            android:id="@+id/image5"
+            android:src="@drawable/brain"
+            android:layout_width="140dp"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"/>
+        <ImageButton
+            android:id="@+id/image6"
+            android:src="@drawable/brain"
+            android:layout_width="140dp"
+            android:layout_height="150dp"
+            android:scaleType="fitXY"/>
+    </GridLayout>
+</RelativeLayout>
