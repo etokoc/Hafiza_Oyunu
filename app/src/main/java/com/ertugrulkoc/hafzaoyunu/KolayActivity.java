@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -112,15 +113,25 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
                 }
             }
         } else {
-            checkCardImage();
-            cardClosing();
+            checkCardImage(view);
+            // cardClosing();
             tiklamaAdet = 0;
         }
     }
 
-    private void checkCardImage() {
-        for (int i = 0; i<buttons.size();i++){
-
+    private void checkCardImage(View view) {
+        for (int i = 0; i < buttons.size(); i++) {
+            if (view instanceof ImageButton) {
+                if ( != R.drawable.brain) {
+                    for (int a = i; a < buttons.size(); a++) {
+                        if (buttonVeri.get(buttons.get(a)) != R.drawable.brain) {
+                            if (buttonVeri.get(buttons.get(i)) == buttonVeri.get(buttons.get(a))) {
+                                Toast.makeText(this, "tmama", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 
