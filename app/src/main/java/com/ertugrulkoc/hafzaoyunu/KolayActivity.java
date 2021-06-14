@@ -97,7 +97,10 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
                 buttons.get(i).setImageResource(images.get(varolanlar.get(i)));
             }else {
                 createRandomNumber();
-                buttons.get(i).setImageResource(images.get(varolanlar.get(i-3)));
+                for (int a = i; a<buttons.size();a++){
+                    buttons.get(a).setImageResource(images.get(varolanlar.get(a-3)));
+                }
+                break;
             }
         }
 
