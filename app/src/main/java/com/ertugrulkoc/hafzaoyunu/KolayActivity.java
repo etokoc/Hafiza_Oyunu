@@ -21,7 +21,7 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
     List<ImageButton> usesButtons;
     List<Integer> usesImages;
     int tiklamaAdet = 0;
-    int sayi;
+    int sayi = 0;
     List<Integer> varolanlar;
     Random rnd;
     List<Integer> uretilenler;
@@ -44,6 +44,7 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
         buttonInitilatizions();
         rnd = new Random();
         uretilenler = new ArrayList<>();
+        sayi = 0;
         createRandomNumber();
         buttonImageAdd();
         listenerInitilatizion();
@@ -51,21 +52,15 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void createRandomNumber() {
-        for (int i = 0; i < 6; i++) {
-            sayi = rnd.nextInt(3);
+        varolanlar.clear();
+        int adet = 3;
+        for (int i = 0; i < adet; i++) {
+            sayi = rnd.nextInt(adet);
             while (varolanlar.contains(sayi)) {
-                sayi = rnd.nextInt(3);
+                sayi = rnd.nextInt(adet);
             }
-            if (varolanlar.size()<4){
-                if (!varolanlar.contains(sayi)) {
-                    varolanlar.add(sayi);
-                }
-            }else {
-                uretilenler=varolanlar;
-                varolanlar.clear();
-            }
+            varolanlar.add(sayi);
         }
-
         Log.i("uretilen", "" + varolanlar);
     }
 
@@ -98,26 +93,36 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
 
     private void buttonImageAdd() {
         for (int i = 0; i < buttons.size(); i++) {
-           // buttons.get(i).setImageResource(images.get(uretilenler.get(i)));
+            if (i<=2){
+                buttons.get(i).setImageResource(images.get(varolanlar.get(i)));
+            }else {
+                createRandomNumber();
+                buttons.get(i).setImageResource(images.get(varolanlar.get(i-3)));
+            }
         }
 
     }
 
     @Override
     public void onClick(View view) {
-        if (tiklamaAdet < 2) {
-            for (int i = 0; i < buttons.size(); i++) {
-                if (view instanceof ImageButton) {
-                    if (view.getId() == buttons.get(i).getId()) {
-                        //    buttons.get(i).setImageResource(images.get(createRandomNumber()));
-                        //  tiklamaAdet++;
-                    }
-                }
-            }
-        } else {
-            cardClosing();
-            tiklamaAdet = 0;
-        }
+//        if (tiklamaAdet < 2) {
+//            for (int i = 0; i < buttons.size(); i++) {
+//                if (view instanceof ImageButton) {
+//                    if (view.getId() == buttons.get(i).getId()) {
+//                        if (i<3){
+//                            buttons.get(i).setImageResource(images.get(varolanlar.get(i)));
+//                        }else {
+//                            createRandomNumber();
+//                            buttons.get(i).setImageResource(images.get(varolanlar.get(i-3)));
+//                        }
+//                        //  tiklamaAdet++;
+//                    }
+//                }
+//            }
+//        } else {
+//            cardClosing();
+//            tiklamaAdet = 0;
+//        }
     }
 
 
