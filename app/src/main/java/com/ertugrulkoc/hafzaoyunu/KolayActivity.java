@@ -101,6 +101,7 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
+    Integer[] secilenler= new Integer[3];
     @Override
     public void onClick(View view) {
         if (tiklamaAdet < 2) {
@@ -109,32 +110,26 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
                     if (view.getId() == buttons.get(i).getId()) {
                         tiklamaAdet++;
                         ((ImageButton) view).setImageResource(buttonVeri.get(buttons.get(i)));
+                        buttons.get(i).setTag(buttonVeri.get(buttons.get(i)));
+                        secilenler[tiklamaAdet]=buttonVeri.get(buttons.get(i));
                     }
                 }
             }
         } else {
-            checkCardImage(view);
-            // cardClosing();
+            checkCardImage();
+            cardClosing();
             tiklamaAdet = 0;
         }
     }
 
-    private void checkCardImage(View view) {
-        for (int i = 0; i < buttons.size(); i++) {
-            if (view instanceof ImageButton) {
-                if ( != R.drawable.brain) {
-                    for (int a = i; a < buttons.size(); a++) {
-                        if (buttonVeri.get(buttons.get(a)) != R.drawable.brain) {
-                            if (buttonVeri.get(buttons.get(i)) == buttonVeri.get(buttons.get(a))) {
-                                Toast.makeText(this, "tmama", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    }
-                }
-            }
+    private void checkCardImage() {
+        if (secilenler[1] == secilenler[2]){
+            Toast.makeText(this, "ayni", Toast.LENGTH_SHORT).show();
         }
     }
-
-
 }
+
+
+
+
 
