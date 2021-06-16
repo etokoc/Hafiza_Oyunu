@@ -65,6 +65,18 @@
             android:textSize="36sp"
             android:backgroundTint="@color/zor_renk"/>
     </LinearLayout>
+    <Button
+        android:layout_marginTop="75dp"
+        android:id="@+id/button_SkorlariListele"
+        android:layout_width="300dp"
+        android:gravity="center"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="55dp"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:text="@string/skorlari_l_stele"
+        android:textSize="36sp"
+        android:backgroundTint="#D0E317"/>
     <TextView
         android:layout_centerInParent="true"
         android:layout_alignParentBottom="true"

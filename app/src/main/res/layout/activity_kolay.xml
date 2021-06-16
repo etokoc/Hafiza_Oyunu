@@ -6,19 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".KolayActivity"
     android:id="@+id/kolay_Relative">
-    <TextView
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="30dp"
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hamle Sayısı: "/>
-    <TextView
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="10dp"
-        android:id="@+id/txt_hamle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"/>
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="25sp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hamle_say_s"/>
+        <TextView
+            android:textSize="25sp"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/txt_hamle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"/>
+    </LinearLayout>
+
     <GridLayout
         android:id="@+id/kolay_gridView"
         android:padding="5dp"

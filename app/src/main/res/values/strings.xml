@@ -3,4 +3,6 @@
     <string name="kolay">Kolay</string>
     <string name="orta">ORTA</string>
     <string name="zor">Zor</string>
+    <string name="hamle_say_s">Hamle Sayısı:</string>
+    <string name="skorlari_l_stele">SKORLARI LİSTELE</string>
 </resources>

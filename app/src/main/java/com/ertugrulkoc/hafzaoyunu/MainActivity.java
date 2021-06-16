@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Intent intent;
-    Button kolay_button, orta_button, zor_button;
+    Button kolay_button, orta_button, zor_button,skorListele_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,11 +20,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         kolay_button = findViewById(R.id.button_Kolay);
         orta_button = findViewById(R.id.button_Orta);
         zor_button = findViewById(R.id.button_Zor);
+        skorListele_button=findViewById(R.id.button_SkorlariListele);
 
         kolay_button.setOnClickListener(MainActivity.this);
         orta_button.setOnClickListener(MainActivity.this);
         zor_button.setOnClickListener(MainActivity.this);
-
+        skorListele_button.setOnClickListener(this);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -38,6 +39,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             break;
             case R.id.button_Zor:
                 istekOlustur(ZorActivity.class);
+                break;
+            case R.id.button_SkorlariListele:
+                istekOlustur(Skorlar.class);
                 break;
         }
     }

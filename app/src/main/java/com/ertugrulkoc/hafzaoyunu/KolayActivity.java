@@ -15,7 +15,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.sql.Time;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Hashtable;
 import java.util.List;
 import java.util.Random;
@@ -172,7 +176,7 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
     Button button_yeniOyun,button_oyundanCik,button_anaEkranaDon;
     Intent intent;
     private void bildirimGoster(String hamleSayisi) {
-
+        veritabaninaKaydet();
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.item_dialog);
         button_anaEkranaDon =dialog.findViewById(R.id.button_AnaEkranaDon);
@@ -202,6 +206,14 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
                 finishAffinity();
             }
         });
+    }
+
+    DataHelper dataHelper;
+    private void veritabaninaKaydet() {
+        Date date = new Date();
+        DateFormat dateFormat =new SimpleDateFormat("dd/MM/yyyy");
+        dataHelper = new DataHelper(this.getApplicationContext());
+        dataHelper.veriEkle(hamle_sayisi+"",dateFormat.format(date),"Kolay");
     }
 }
 
