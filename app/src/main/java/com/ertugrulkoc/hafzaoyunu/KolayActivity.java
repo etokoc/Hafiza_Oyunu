@@ -1,11 +1,12 @@
 package com.ertugrulkoc.hafzaoyunu;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,20 +16,26 @@ import java.util.List;
 import java.util.Random;
 
 public class KolayActivity extends AppCompatActivity implements View.OnClickListener {
+    final Handler handler = new Handler();
     List<Integer> images;
     List<ImageButton> buttons;
     GridLayout gridLayout;
     int tiklamaAdet = 0;
     int sayi = 0;
+    TextView hamleSayisiView;
+    int hamle_sayisi = 0;
     List<Integer> varolanlar;
     Random rnd;
     Hashtable<ImageButton, Integer> buttonVeri;
+    Integer[] secilenResimler = new Integer[3];
+    ImageButton[] secilenButtonlar = new ImageButton[3];
     private Object childView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kolay);
+        hamleSayisiView = findViewById(R.id.txt_hamle);
         buttonVeri = new Hashtable<>();
         varolanlar = new ArrayList<>();
         gridLayout = findViewById(R.id.kolay_gridView);
@@ -101,7 +108,6 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
 
     }
 
-    Integer[] secilenler= new Integer[3];
     @Override
     public void onClick(View view) {
         if (tiklamaAdet < 2) {
@@ -110,21 +116,41 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
                     if (view.getId() == buttons.get(i).getId()) {
                         tiklamaAdet++;
                         ((ImageButton) view).setImageResource(buttonVeri.get(buttons.get(i)));
-                        buttons.get(i).setTag(buttonVeri.get(buttons.get(i)));
-                        secilenler[tiklamaAdet]=buttonVeri.get(buttons.get(i));
+//                        buttons.get(i).setTag(buttonVeri.get(buttons.get(i)));
+                        secilenResimler[tiklamaAdet] = buttonVeri.get(buttons.get(i));
+                        secilenButtonlar[tiklamaAdet] = buttons.get(i);
+                        if (tiklamaAdet == 2) {
+                            if (secilenButtonlar[tiklamaAdet - 1].getId() != secilenButtonlar[tiklamaAdet].getId() ) {
+                                checkCardImage();
+                            }else{
+                                cardClosing();
+                                tiklamaAdet = 0;
+                            }
+                        }
                     }
                 }
             }
-        } else {
-            checkCardImage();
-            cardClosing();
-            tiklamaAdet = 0;
         }
     }
 
     private void checkCardImage() {
-        if (secilenler[1] == secilenler[2]){
-            Toast.makeText(this, "ayni", Toast.LENGTH_SHORT).show();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (secilenResimler[1] == secilenResimler[2]) {
+                    secilenButtonlar[1].setEnabled(false);
+                    secilenButtonlar[1].setVisibility(View.GONE);
+                    secilenButtonlar[2].setEnabled(false);
+                    secilenButtonlar[2].setVisibility(View.GONE);
+                }
+                cardClosing();
+                tiklamaAdet = 0;
+            }
+        }, 1000);
+
+        if (secilenResimler[1] != secilenResimler[2]) {
+            hamle_sayisi++;
+            hamleSayisiView.setText("" + hamle_sayisi);
         }
     }
 }
