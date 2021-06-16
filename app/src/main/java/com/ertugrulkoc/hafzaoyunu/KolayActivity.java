@@ -1,13 +1,18 @@
 package com.ertugrulkoc.hafzaoyunu;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
@@ -29,6 +34,7 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
     Hashtable<ImageButton, Integer> buttonVeri;
     Integer[] secilenResimler = new Integer[3];
     ImageButton[] secilenButtonlar = new ImageButton[3];
+    TextView hamleSonuc;
     private Object childView;
 
     @Override
@@ -48,7 +54,6 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
         createRandomNumber();
         buttonImageAdd();
         listenerInitilatizion();
-
     }
 
     private void createRandomNumber() {
@@ -120,12 +125,12 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
                         secilenResimler[tiklamaAdet] = buttonVeri.get(buttons.get(i));
                         secilenButtonlar[tiklamaAdet] = buttons.get(i);
                         if (tiklamaAdet == 2) {
-                            if (secilenButtonlar[tiklamaAdet - 1].getId() != secilenButtonlar[tiklamaAdet].getId() ) {
+                            if (secilenButtonlar[tiklamaAdet - 1].getId() != secilenButtonlar[tiklamaAdet].getId()) {
                                 checkCardImage();
-                            }else{
+                            } else {
                                 tiklamaAdet = 0;
                             }
-                        }else {
+                        } else {
                             secilenButtonlar[tiklamaAdet].setEnabled(false);
                         }
                     }
@@ -143,8 +148,13 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
                     secilenButtonlar[1].setVisibility(View.GONE);
                     secilenButtonlar[2].setEnabled(false);
                     secilenButtonlar[2].setVisibility(View.GONE);
-                }else {
-                    for(int a=0; a<buttons.size(); a++){
+                    buttons.remove(secilenButtonlar[1]);
+                    buttons.remove(secilenButtonlar[2]);
+                    if (buttons.size() < 1){
+                        bildirimGoster(""+hamle_sayisi);
+                    }
+                } else {
+                    for (int a = 0; a < buttons.size(); a++) {
                         buttons.get(a).setEnabled(true);
                     }
                 }
@@ -157,6 +167,41 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
             hamle_sayisi++;
             hamleSayisiView.setText("" + hamle_sayisi);
         }
+    }
+    Dialog dialog;
+    Button button_yeniOyun,button_oyundanCik,button_anaEkranaDon;
+    Intent intent;
+    private void bildirimGoster(String hamleSayisi) {
+
+        dialog = new Dialog(this);
+        dialog.setContentView(R.layout.item_dialog);
+        button_anaEkranaDon =dialog.findViewById(R.id.button_AnaEkranaDon);
+        button_yeniOyun=dialog.findViewById(R.id.button_yeniOyun);
+        button_oyundanCik=dialog.findViewById(R.id.button_oyundanCik);
+        hamleSonuc = dialog.findViewById(R.id.txt_hamleSonuc);
+        hamleSonuc.setText(hamleSayisi + "");
+        dialog.show();
+        button_yeniOyun.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(),KolayActivity.class);
+                startActivity(intent);
+            }
+        });
+        button_anaEkranaDon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(getApplicationContext(),MainActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        button_oyundanCik.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finishAffinity();
+            }
+        });
     }
 }
 

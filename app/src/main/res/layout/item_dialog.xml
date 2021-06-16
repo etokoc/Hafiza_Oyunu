@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/backColor"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#6026301D"
+        android:gravity="center"
+        android:text="Tebrikler"
+        android:textColor="@color/special_text_color"
+        android:textSize="50sp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/txt_hamleSonuc"
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="100"
+            android:layout_marginEnd="4dp"
+            android:textColor="@color/special_text_color"
+            android:textSize="20sp" />
+        <TextView
+            android:layout_marginTop="5dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hamlede Oyunu Tamamladınız !!!"
+            android:textColor="@color/special_text_color"
+            android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:src="@drawable/victory" />
+
+    <LinearLayout
+        android:layout_marginBottom="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/button_yeniOyun"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2C9C13"
+            android:text="Yeni Oyun" />
+
+        <Button
+            android:id="@+id/button_AnaEkranaDon"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#1B324A"
+            android:text="Ana ekrana Dön" />
+
+        <Button
+            android:id="@+id/button_oyundanCik"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FF5252"
+            android:text="Oyundan Çık" />
+    </LinearLayout>
+
+</LinearLayout>
