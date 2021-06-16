@@ -123,9 +123,10 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
                             if (secilenButtonlar[tiklamaAdet - 1].getId() != secilenButtonlar[tiklamaAdet].getId() ) {
                                 checkCardImage();
                             }else{
-                                cardClosing();
                                 tiklamaAdet = 0;
                             }
+                        }else {
+                            secilenButtonlar[tiklamaAdet].setEnabled(false);
                         }
                     }
                 }
@@ -142,6 +143,10 @@ public class KolayActivity extends AppCompatActivity implements View.OnClickList
                     secilenButtonlar[1].setVisibility(View.GONE);
                     secilenButtonlar[2].setEnabled(false);
                     secilenButtonlar[2].setVisibility(View.GONE);
+                }else {
+                    for(int a=0; a<buttons.size(); a++){
+                        buttons.get(a).setEnabled(true);
+                    }
                 }
                 cardClosing();
                 tiklamaAdet = 0;
