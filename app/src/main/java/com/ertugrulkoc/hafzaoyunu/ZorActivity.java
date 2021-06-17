@@ -218,7 +218,7 @@ public class ZorActivity extends AppCompatActivity implements View.OnClickListen
         Date date = new Date();
         DateFormat dateFormat =new SimpleDateFormat("dd/MM/yyyy");
         dataHelper = new DataHelper(this.getApplicationContext());
-        dataHelper.veriEkle(hamle_sayisi+"",dateFormat.format(date),"Kolay");
+        dataHelper.veriEkle(hamle_sayisi+"",dateFormat.format(date),"Zor");
     }
 }
 
