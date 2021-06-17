@@ -100,14 +100,14 @@ public class ZorActivity extends AppCompatActivity implements View.OnClickListen
         images.add(R.drawable.chicken);
         images.add(R.drawable.cow);
         images.add(R.drawable.frog);
-        images.add(R.drawable.bee);
-        images.add(R.drawable.horse);
-        images.add(R.drawable.chicken);
+        images.add(R.drawable.monkey);
+        images.add(R.drawable.dog);
+        images.add(R.drawable.sheep);
     }
 
     private void buttonImageAdd() {
         for (int i = 0; i < buttons.size(); i++) {
-            if (i <= 2) {
+            if (i <= 7) {
 //                buttons.get(i).setImageResource(images.get(varolanlar.get(i)));
                 buttonVeri.put(buttons.get(i), images.get(varolanlar.get(i)));
             } else {
