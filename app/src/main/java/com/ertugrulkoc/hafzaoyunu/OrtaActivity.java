@@ -2,6 +2,7 @@ package com.ertugrulkoc.hafzaoyunu;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -9,13 +10,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.GridLayout;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.sql.Time;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -38,13 +37,19 @@ public class OrtaActivity extends AppCompatActivity implements View.OnClickListe
     Hashtable<ImageButton, Integer> buttonVeri;
     Integer[] secilenResimler = new Integer[3];
     ImageButton[] secilenButtonlar = new ImageButton[3];
+    int[] backgorunds = new int[3];
     TextView hamleSonuc;
+    Dialog dialog;
+    Button button_yeniOyun, button_oyundanCik, button_anaEkranaDon;
+    Intent intent;
+    DataHelper dataHelper;
     private Object childView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_orta);
+        rnd = new Random();
         hamleSayisiView = findViewById(R.id.txt_hamle);
         buttonVeri = new Hashtable<>();
         varolanlar = new ArrayList<>();
@@ -53,7 +58,6 @@ public class OrtaActivity extends AppCompatActivity implements View.OnClickListe
         buttons = new ArrayList<>();
         animalInitilatizions();
         buttonInitilatizions();
-        rnd = new Random();
         sayi = 0;
         createRandomNumber();
         buttonImageAdd();
@@ -156,8 +160,8 @@ public class OrtaActivity extends AppCompatActivity implements View.OnClickListe
                     secilenButtonlar[2].setVisibility(View.GONE);
                     buttons.remove(secilenButtonlar[1]);
                     buttons.remove(secilenButtonlar[2]);
-                    if (buttons.size() < 1){
-                        bildirimGoster(""+hamle_sayisi);
+                    if (buttons.size() < 1) {
+                        bildirimGoster("" + hamle_sayisi);
                     }
                 } else {
                     for (int a = 0; a < buttons.size(); a++) {
@@ -174,30 +178,28 @@ public class OrtaActivity extends AppCompatActivity implements View.OnClickListe
             hamleSayisiView.setText("" + hamle_sayisi);
         }
     }
-    Dialog dialog;
-    Button button_yeniOyun,button_oyundanCik,button_anaEkranaDon;
-    Intent intent;
+
     private void bildirimGoster(String hamleSayisi) {
         veritabaninaKaydet();
         dialog = new Dialog(this);
         dialog.setContentView(R.layout.item_dialog);
-        button_anaEkranaDon =dialog.findViewById(R.id.button_AnaEkranaDon);
-        button_yeniOyun=dialog.findViewById(R.id.button_yeniOyun);
-        button_oyundanCik=dialog.findViewById(R.id.button_oyundanCik);
+        button_anaEkranaDon = dialog.findViewById(R.id.button_AnaEkranaDon);
+        button_yeniOyun = dialog.findViewById(R.id.button_yeniOyun);
+        button_oyundanCik = dialog.findViewById(R.id.button_oyundanCik);
         hamleSonuc = dialog.findViewById(R.id.txt_hamleSonuc);
         hamleSonuc.setText(hamleSayisi + "");
         dialog.show();
         button_yeniOyun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getApplicationContext(),OrtaActivity.class);
+                intent = new Intent(getApplicationContext(), OrtaActivity.class);
                 startActivity(intent);
             }
         });
         button_anaEkranaDon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getApplicationContext(),MainActivity.class);
+                intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
         });
@@ -210,12 +212,11 @@ public class OrtaActivity extends AppCompatActivity implements View.OnClickListe
         });
     }
 
-    DataHelper dataHelper;
     private void veritabaninaKaydet() {
         Date date = new Date();
-        DateFormat dateFormat =new SimpleDateFormat("dd/MM/yyyy");
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         dataHelper = new DataHelper(this.getApplicationContext());
-        dataHelper.veriEkle(hamle_sayisi+"",dateFormat.format(date),"Orta");
+        dataHelper.veriEkle(hamle_sayisi + "", dateFormat.format(date), "Orta");
     }
 }
 
