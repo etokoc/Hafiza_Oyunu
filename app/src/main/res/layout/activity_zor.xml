@@ -28,7 +28,7 @@
     </LinearLayout>
 
     <GridLayout
-        android:id="@+id/kolay_gridView"
+        android:id="@+id/zor_gridView"
         android:padding="5dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
