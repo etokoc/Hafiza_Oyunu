@@ -190,7 +190,7 @@ public class OrtaActivity extends AppCompatActivity implements View.OnClickListe
         button_yeniOyun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getApplicationContext(),KolayActivity.class);
+                intent = new Intent(getApplicationContext(),OrtaActivity.class);
                 startActivity(intent);
             }
         });

@@ -193,7 +193,7 @@ public class ZorActivity extends AppCompatActivity implements View.OnClickListen
         button_yeniOyun.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(getApplicationContext(),KolayActivity.class);
+                intent = new Intent(getApplicationContext(),ZorActivity.class);
                 startActivity(intent);
             }
         });
