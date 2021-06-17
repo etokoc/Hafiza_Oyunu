@@ -5,19 +5,26 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".OrtaActivity">
-    <TextView
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="30dp"
+    <LinearLayout
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hamle Sayısı: "/>
-    <TextView
-        android:layout_alignParentEnd="true"
-        android:layout_marginRight="10dp"
-        android:id="@+id/txt_hamle_orta"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="0"/>
+        android:orientation="horizontal">
+        <TextView
+            android:textSize="25sp"
+            android:layout_marginEnd="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/hamle_say_s"/>
+        <TextView
+            android:textSize="25sp"
+            android:layout_marginEnd="10dp"
+            android:id="@+id/txt_hamle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"/>
+    </LinearLayout>
     <GridLayout
         android:id="@+id/kolay_gridView_orta"
         android:padding="5dp"
@@ -25,9 +32,8 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerInParent="true"
-        android:columnCount="3"
-        android:rowCount="2">
-        <ImageButton
+        android:columnCount="3">
+         <ImageButton
             android:id="@+id/image1_orta"
             android:src="@drawable/brain"
             android:layout_width="110dp"
@@ -45,6 +51,14 @@
             android:layout_width="110dp"
             android:layout_height="120dp"
             android:scaleType="fitXY"/>
+        <ImageButton
+            android:layout_column="1"
+            android:id="@+id/image6_orta"
+            android:src="@drawable/brain"
+            android:layout_width="110dp"
+            android:layout_height="120dp"
+            android:scaleType="fitXY"/>
+
         <ImageButton
             android:id="@+id/image7_orta"
             android:src="@drawable/brain"
@@ -64,6 +78,7 @@
             android:layout_height="120dp"
             android:scaleType="fitXY"/>
         <ImageButton
+            android:layout_column="0"
             android:id="@+id/image10_orta"
             android:src="@drawable/brain"
             android:layout_width="110dp"
@@ -71,6 +86,7 @@
             android:scaleType="fitXY"/>
 
         <ImageButton
+            android:layout_column="1"
             android:id="@+id/image4_orta"
             android:src="@drawable/brain"
             android:layout_width="110dp"
@@ -82,12 +98,6 @@
             android:layout_width="110dp"
             android:layout_height="120dp"
             android:scaleType="fitXY"/>
-        <ImageButton
-            android:layout_column="1"
-            android:id="@+id/image6_orta"
-            android:src="@drawable/brain"
-            android:layout_width="110dp"
-            android:layout_height="120dp"
-            android:scaleType="fitXY"/>
+
     </GridLayout>
 </RelativeLayout>
